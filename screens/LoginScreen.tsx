@@ -1,36 +1,23 @@
 import { StackScreenProps } from '@react-navigation/stack';
-import * as React from 'react';
+import React, {Component} from 'react';
 import { Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { login } from '../features/userSlice';
 import { firebase } from '../src/firebase/config'
 
 import { RootStackParamList } from '../types';
+import LoginComponent from '../components/LoginComponent';
 
 export default function LoginScreen({
     navigation,
 }: StackScreenProps<RootStackParamList, 'Login'>) {
-    const login = () => {
-        var provider = new firebase.auth.GoogleAuthProvider();
-        firebase.auth().useDeviceLanguage()
-        firebase.auth().signInWithPopup(provider).then(function (result) {
 
-            var user = result.user;
-            console.log(user?.displayName)
-            navigation.replace('Root')
-
-        }).catch(function (error) {
-
-            var errorMessage = error.message;
-
-            console.log(errorMessage)
-        })
-    }
 
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Login :)</Text>
             {/* <Button title="Home" onPress={()=>navigation.replace('Root')}/> */}
-            <Button title="Home" onPress={() => login()} />
+            {/* <Button title="Home" onPress={() => login()} /> */}
+            <LoginController />
 
             <Button title="Register" onPress={() => navigation.replace('Register')} />
 

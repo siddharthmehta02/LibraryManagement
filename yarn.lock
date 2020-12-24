@@ -1832,6 +1832,11 @@
     sudo-prompt "^9.0.0"
     wcwidth "^1.0.1"
 
+"@react-native-community/google-signin@^5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@react-native-community/google-signin/-/google-signin-5.0.0.tgz#d1d89c697cc214c10017fa283817e84bd03b2d76"
+  integrity sha512-MvFHImmtlmE1kJZgZ9XaULm/OBuQ/AQWOCPr3NzYTUv2cCqyGwfFrealo5PS/fuL/InCGcfqK1k/1dZ+67Hjmg==
+
 "@react-native-community/masked-view@0.1.10":
   version "0.1.10"
   resolved "https://registry.yarnpkg.com/@react-native-community/masked-view/-/masked-view-0.1.10.tgz#5dda643e19e587793bc2034dd9bf7398ad43d401"
@@ -3551,6 +3556,13 @@ expect@^25.5.0:
     jest-message-util "^25.5.0"
     jest-regex-util "^25.2.6"
 
+expo-app-auth@~9.3.0:
+  version "9.3.0"
+  resolved "https://registry.yarnpkg.com/expo-app-auth/-/expo-app-auth-9.3.0.tgz#072bd3faa8a34ff50f700627bd4eb8480629b915"
+  integrity sha512-f8OdQDNmC5vSdBWzwtic5pq+bmtSCYGU1KeVhKV3W8VgGIgVx40Q72q3M+SMs68bz4RCuC1g7LOGTOBWzXIuNw==
+  dependencies:
+    invariant "^2.2.4"
+
 expo-application@~2.4.1:
   version "2.4.1"
   resolved "https://registry.yarnpkg.com/expo-application/-/expo-application-2.4.1.tgz#f8eb4a3a05a0b8a8f38f2e981f587a815945b685"
@@ -3597,6 +3609,20 @@ expo-font@~8.4.0:
   dependencies:
     fbjs "1.0.0"
     fontfaceobserver "^2.1.0"
+
+expo-google-app-auth@^8.1.4:
+  version "8.1.4"
+  resolved "https://registry.yarnpkg.com/expo-google-app-auth/-/expo-google-app-auth-8.1.4.tgz#e87a548ee5e32c5951803781efcadf55eab7ad0d"
+  integrity sha512-2hXZCXEo7Dg3SDcc73MDniL+tJdwUzeBxTvXTGpnTKNF3JakuehLnx9ALuuEU86MKvM49/a3FiflhfEiWZ5qDw==
+  dependencies:
+    expo-app-auth "~9.3.0"
+
+expo-google-sign-in@~8.4.0:
+  version "8.4.0"
+  resolved "https://registry.yarnpkg.com/expo-google-sign-in/-/expo-google-sign-in-8.4.0.tgz#bceca538840c68fc4775004432e27c5bff73f897"
+  integrity sha512-7kf0Nsy+WSizJPIUUQIGK6qiKbpLRjm3YKrqREeGpYiebOyi51lWw78CM6ylcb+FN2vb9d/kTEzinAfTgsPQ7w==
+  dependencies:
+    invariant "^2.2.4"
 
 expo-keep-awake@~8.4.0:
   version "8.4.0"
@@ -6924,6 +6950,11 @@ react-native-gesture-handler@^1.9.0:
     hoist-non-react-statics "^3.3.0"
     invariant "^2.2.4"
     prop-types "^15.7.2"
+
+react-native-google-signin@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/react-native-google-signin/-/react-native-google-signin-2.1.1.tgz#4281940eee88602b0181dd49affdf8c92980c85c"
+  integrity sha512-6l3fiLdX/bfhh0BoxGq+jGkagFsO+mrE/eRV4+3/0k8+FDxO90vdPpQdDiwlM5vWXRxWthTzMM09/jHw+4cvNw==
 
 react-native-iphone-x-helper@^1.3.0:
   version "1.3.1"
