@@ -14,13 +14,8 @@ export default function HomeScreen() {
                     <BookBar genre={"Sci-Fi"} />
                     <BookBar genre={"Sci-Fi"} />
                     <BookBar genre={"Sci-Fi"} />
-
                     <BookBar genre={"Sci-Fi"} />
                     <BookBar genre={"Sci-Fi"} />
-
-
-
-
                 </View>
             </ScrollView>
         </SafeAreaView>

@@ -21,7 +21,7 @@ export default function RegisterationScreen() {
             .auth()
             .createUserWithEmailAndPassword(email, password)
             .then((response) => {
-                const uid = response.user.uid
+                const uid = response.user?.uid
                 const data = {
                     id: uid,
                     email,
