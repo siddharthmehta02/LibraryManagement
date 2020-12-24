@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "761963379866",
+    "project_id": "library-4ad58",
+    "storage_bucket": "library-4ad58.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:761963379866:android:3ddd82c0db93dfbbcaf323",
+        "android_client_info": {
+          "package_name": "com.sidnis"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "761963379866-d6qovc6mc1tn6menjef5cbqu742v1cls.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCKn6rutVCDNGguP33JaG50Qlhm7GZpjPY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "761963379866-d6qovc6mc1tn6menjef5cbqu742v1cls.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

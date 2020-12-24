@@ -1,13 +1,21 @@
-import { Ionicons } from '@expo/vector-icons';
+
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
-import TabOneScreen from '../screens/TabOneScreen';
-import TabTwoScreen from '../screens/TabTwoScreen';
-import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
+import SearchScreen from '../screens/SearchScreen';
+import HomeScreen from "../screens/HomeScreen";
+import CartScreen from '../screens/CartScreen';
+import BooksScreen from '../screens/BooksScreen';
+import UserScreen from "../screens/UserScreen";
+
+import { EvilIcons } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { Foundation } from '@expo/vector-icons';
+import { BottomTabParamList, BooksParamList, UserParamList, HomeParamList, SearchParamList, CartParamList, LoginParamList } from '../types';
+import LoginScreen from '../screens/LoginScreen';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -16,20 +24,41 @@ export default function BottomTabNavigator() {
 
   return (
     <BottomTab.Navigator
-      initialRouteName="TabOne"
+      initialRouteName="Home"
       tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}>
       <BottomTab.Screen
-        name="TabOne"
-        component={TabOneNavigator}
+        name="Cart"
+        component={CartNavigator}
         options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+          tabBarIcon: ({ color }) => <EvilIcons name="cart" size={24} color={color} />,
         }}
       />
       <BottomTab.Screen
-        name="TabTwo"
-        component={TabTwoNavigator}
+        name="Search"
+        component={SearchNavigator}
         options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+          tabBarIcon: ({ color }) => <EvilIcons name="search" size={24} color={color} />,
+        }}
+      />
+      <BottomTab.Screen
+        name="Home"
+        component={HomeNavigator}
+        options={{
+          tabBarIcon: ({ color }) => <Foundation name="home" size={24} color={color} />,
+        }}
+      />
+      <BottomTab.Screen
+        name="Books"
+        component={BooksNavigator}
+        options={{
+          tabBarIcon: ({ color }) => <MaterialCommunityIcons name="bookshelf" size={24} color={color} />,
+        }}
+      />
+      <BottomTab.Screen
+        name="User"
+        component={UserNavigator}
+        options={{
+          tabBarIcon: ({ color }) => <EvilIcons name="user" size={24} color={color} />,
         }}
       />
     </BottomTab.Navigator>
@@ -38,36 +67,90 @@ export default function BottomTabNavigator() {
 
 // You can explore the built-in icon families and icons on the web at:
 // https://icons.expo.fyi/
-function TabBarIcon(props: { name: string; color: string }) {
-  return <Ionicons size={30} style={{ marginBottom: -3 }} {...props} />;
-}
+
 
 // Each tab has its own navigation stack, you can read more about this pattern here:
 // https://reactnavigation.org/docs/tab-based-navigation#a-stack-navigator-for-each-tab
-const TabOneStack = createStackNavigator<TabOneParamList>();
+const CartStack = createStackNavigator<CartParamList>();
 
-function TabOneNavigator() {
+function CartNavigator() {
   return (
-    <TabOneStack.Navigator>
-      <TabOneStack.Screen
-        name="TabOneScreen"
-        component={TabOneScreen}
-        options={{ headerTitle: 'Tab One Title' }}
+    <CartStack.Navigator>
+      <CartStack.Screen
+        name="CartScreen"
+        component={CartScreen}
+        options={{ headerTitle: 'Cart' }}
       />
-    </TabOneStack.Navigator>
+    </CartStack.Navigator>
   );
 }
 
-const TabTwoStack = createStackNavigator<TabTwoParamList>();
+// const LoginStack = createStackNavigator<LoginParamList>();
 
-function TabTwoNavigator() {
+// function LoginNavigator() {
+//   return (
+//     <LoginStack.Navigator>
+//       <LoginStack.Screen
+//         name="Login"
+//         component={LoginScreen}
+//         options={{ headerTitle: 'Login' }}
+//       />
+//     </LoginStack.Navigator>
+//   );
+// }
+
+const SearchStack = createStackNavigator<SearchParamList>();
+
+function SearchNavigator() {
   return (
-    <TabTwoStack.Navigator>
-      <TabTwoStack.Screen
-        name="TabTwoScreen"
-        component={TabTwoScreen}
-        options={{ headerTitle: 'Tab Two Title' }}
+    <SearchStack.Navigator>
+      <SearchStack.Screen
+        name="SearchScreen"
+        component={SearchScreen}
+        options={{ headerTitle: 'Search' }}
       />
-    </TabTwoStack.Navigator>
+    </SearchStack.Navigator>
+  );
+}
+
+const HomeStack = createStackNavigator<HomeParamList>();
+
+function HomeNavigator() {
+  return (
+    <HomeStack.Navigator>
+      <HomeStack.Screen
+        name="HomeScreen"
+        component={HomeScreen}
+        options={{ headerTitle: "Home" }}
+      />
+    </HomeStack.Navigator>
+  );
+}
+
+const BooksStack = createStackNavigator<BooksParamList>();
+
+function BooksNavigator() {
+  return (
+    <BooksStack.Navigator>
+      <BooksStack.Screen
+        name="BooksScreen"
+        component={BooksScreen}
+        options={{ headerTitle: "Books" }}
+      />
+    </BooksStack.Navigator>
+  );
+}
+
+const UserStack = createStackNavigator<UserParamList>();
+
+function UserNavigator() {
+  return (
+    <UserStack.Navigator>
+      <UserStack.Screen
+        name="UserScreen"
+        component={UserScreen}
+        options={{ headerTitle: "User" }}
+      />
+    </UserStack.Navigator>
   );
 }
