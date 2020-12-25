@@ -1,66 +1,66 @@
-import React, { Component, Fragment } from "react";
-import { View, Text } from 'react-native'
-
-import * as GoogleSignIn from 'expo-google-sign-in';
+import React from 'react'
+import { View, Text,Button } from 'react-native'
+import { connect } from 'react-redux'
 import * as Google from 'expo-google-app-auth';
-import firebase from '../src/firebase/config'
+import { firebase } from '../src/firebase/config';
 
-export default class LoginController extends Component {
+import { RootStackParamList } from '../types';
 
-    logInGoogle = async () => {
 
+class LoginComponent extends React.Component {
+
+    signInWithGoogleAsync = async () => {
         try {
-            const result = await Google.logInAsync({
 
-                androidClientId: 761963379866 - d6qovc6mc1tn6menjef5cbqu742v1cls.apps.googleusercontent.com,
-                scopes: ["profile", "email"],
-                behavior: 'web'
+            const result = await Google.logInAsync({
+                androidClientId: '761963379866-lam76rno5v7i2vi2156qgch4u8k223ei.apps.googleusercontent.com',
+                scopes: ['profile', 'email'],
             });
 
-            if (result.type === "success") {
-                const { idToken, accessToken } = result;
-                const credential = GoogleProvider.credential(idToken, accessToken);
+            if (result.type === 'success') {
+                const credential = firebase.auth.GoogleAuthProvider.credential(result.idToken, result.accessToken)
+                const firebaseUserCredential = await firebase.auth().signInWithCredential(credential);
+                console.log(result) //117611527123843327965
+                console.log(firebaseUserCredential.user.uid) //suYs4nfIRSeCvfkJYg9278pCf263
+
                 firebase
-                    .auth()
-                    .signInWithCredential(credential)
-                    .then(function (result) {
-                        if (result.additionalUserInfo.isNewUser) {
-                            Firebase.database().ref('UserToQuestion/' + Firebase.auth().currentUser.uid).set({
-
-                                notifier: {
-                                    Email: Firebase.auth().currentUser.email
-
-                                }
-                            })
-                        }
+                    .firestore()
+                    .collection("Library")
+                    .doc("Users")
+                    .collection("Users")
+                    .doc(firebaseUserCredential.user.uid)
+                    .set({
+                        Name: result.user.givenName,
+                        Email: result.user.email,
+                        Photo: result.user.photoUrl
                     })
-                    .catch(error => {
-                        Alert.alert(error)
-                        console.log("firebase cred err:", error);
-                    });
+                console.log(this.user)
+                this.props.dispatch({ type: "LOGIN", user: { email: result.user.email, photoUrl: result.user.photoUrl, name: result.user.givenName } })
+                // console.log(this.user)
+
+
+
+                this.props.navigation.replace('Root')
             } else {
-                return { cancelled: true };
+                console.log("Cancelled")
             }
-        } catch (err) {
-            console.log("err:", err);
+        } catch (e) {
+            console.log("Error: ", e)
         }
-
-        // signIn() {
-        //     const { type, accessToken, user } = await Google.logInAsync({
-        //         androidClientId: `761963379866-d6qovc6mc1tn6menjef5cbqu742v1cls.apps.googleusercontent.com`,
-        //         // androidStandaloneAppClientId: `<YOUR_ANDROID_CLIENT_ID>`,
-        //     });
-        //     if (type === 'success') {
-        //         /* `accessToken` is now valid and can be used to get data from the Google API with HTTP requests */
-        //         console.log(user);
-        //     }
-        // }
-
-        render() {
-            return (
-                <View>{(this.logInGoogle)}</View>
-            );
-
-        }
-
     }
+
+    render() {
+        
+        return (
+            <View>
+                <Button title="Loginn" onPress={() => this.signInWithGoogleAsync()} />
+            </View>
+        )
+    };
+}
+
+const mapStateToProps = (state) => ({
+    user: state.user
+});
+
+export default connect(mapStateToProps)(LoginComponent);

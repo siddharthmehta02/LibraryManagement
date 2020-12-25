@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { View, Text, Image, StyleSheet } from 'react-native'
 import { FlatList, TouchableOpacity } from 'react-native-gesture-handler'
+// import { NavigationContainer, StackActions } from '@react-navigation/native
 import { firebase } from "../src/firebase/config";
 
-export default function BookBar({ genre }) {
+export default function BookBar({ genre, navigation }) {
 
     const [books, setBooks] = useState([])
     var list = []
@@ -44,7 +45,7 @@ export default function BookBar({ genre }) {
                         return (
 
                             <View style={styles.content}>
-                                <TouchableOpacity>
+                                <TouchableOpacity onPress={()=>navigation.replace('BookInfo', {item: item})}>
                                     <Image style={styles.image} source={{ uri: item.Image }} />
                                     <Text style={styles.title}>{item.Title}</Text>
                                 </TouchableOpacity>

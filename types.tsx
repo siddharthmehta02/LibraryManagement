@@ -3,6 +3,7 @@ export type RootStackParamList = {
   NotFound: undefined;
   Login: undefined;
   Register: undefined;
+  BookInfo: undefined;
 };
 
 export type BottomTabParamList = {
@@ -36,3 +37,7 @@ export type UserParamList = {
 export type LoginParamList = {
   LoginScreen: undefined;
 };
+
+export type BookInfoParamList = {
+  BookInfoScreen: undefined;
+}

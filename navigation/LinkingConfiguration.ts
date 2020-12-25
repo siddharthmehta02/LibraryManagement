@@ -1,5 +1,4 @@
 import * as Linking from 'expo-linking';
-
 export default {
   prefixes: [Linking.makeUrl('/')],
   config: {
@@ -34,6 +33,11 @@ export default {
           Login: {
             screens: {
               LoginScreen: 'Login',
+            },
+          },
+          BookInfo: {
+            screens: {
+              BookInfoScreen: 'BookInfo',
             },
           },
         },
