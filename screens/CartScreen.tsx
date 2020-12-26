@@ -22,16 +22,11 @@ export default function CartScreen() {
 
   const deleteCart = (del) => {
     title.collection("Cart").doc(del.Title).delete().then(() => {
-      // console.log(del.Title);
-      // display();
       title
         .get()
         .then((snapshot) => {
           const data = snapshot.docs.map((doc) => doc.data());
-
-          // console.log(data);
           setCart(data)
-          // console.log(cart)
         });
     });
 
@@ -54,10 +49,16 @@ export default function CartScreen() {
 
       // console.log(data);
       setCart(data)
-      // console.log(cart)
+      console.log(cart)
     });
 
-
+if(cart.length===0){
+  return(
+    <View style={styles.container2}>
+        <Text>Add items here :)</Text>
+      </View>
+  )
+}
 
 
 
@@ -77,7 +78,7 @@ export default function CartScreen() {
                 <View style={styles.delete}>
                   <Text style={styles.title}>{item.Title}</Text>
                   <TouchableOpacity onPress={() => deleteCart(item)}>
-                    <MaterialIcons name="delete" size={24} color="white" style={styles.deleteBtn} />
+                    <MaterialIcons name="delete" size={24} color="#009688" style={styles.deleteBtn} />
                   </TouchableOpacity>
                 </View>
 
@@ -100,9 +101,14 @@ export default function CartScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: {
+  container2: {
     flex: 1,
+    justifyContent:'center',
+    alignItems:'center'
 
+  },
+  container:{
+    flex:1,
   },
   button: {
     elevation: 8,
@@ -117,8 +123,6 @@ const styles = StyleSheet.create({
   },
 
   info: {
-    // alignItems: 'center',
-    // justifyContent: 'center',
     paddingLeft: 10,
     width: '100%'
   },
@@ -129,7 +133,6 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 25,
-    // fontWeight: 'bold',
   },
   separator: {
     marginVertical: 30,
@@ -146,9 +149,7 @@ const styles = StyleSheet.create({
   },
   delete: {
     flexDirection: 'row',
-    // width: 700,
     alignItems: 'center',
-    // justifyContent: 'space-between'
 
   },
   deleteBtn: {

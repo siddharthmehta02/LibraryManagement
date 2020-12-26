@@ -1,12 +1,8 @@
-import React, { useState, useEffect } from 'react'
-import { View, Text, Button } from 'react-native'
+import React from 'react'
+import { View, TouchableOpacity, Image } from 'react-native'
 import { connect } from 'react-redux'
 import * as Google from 'expo-google-app-auth';
 import { firebase } from '../src/firebase/config';
-import AsyncStorage from '@react-native-community/async-storage'
-
-import { RootStackParamList } from '../types';
-
 
 class LoginComponent extends React.Component {
 
@@ -24,8 +20,8 @@ class LoginComponent extends React.Component {
             if (result.type === 'success') {
                 const credential = firebase.auth.GoogleAuthProvider.credential(result.idToken, result.accessToken)
                 const firebaseUserCredential = await firebase.auth().signInWithCredential(credential);
-                console.log(result) //117611527123843327965
-                console.log(firebaseUserCredential.user.uid) //suYs4nfIRSeCvfkJYg9278pCf263
+                console.log(result) 
+                console.log(firebaseUserCredential.user.uid)
 
                 firebase
                     .firestore()
@@ -58,7 +54,11 @@ class LoginComponent extends React.Component {
 
         return (
             <View>
-                <Button title="Loginn" onPress={() => this.signInWithGoogleAsync()} />
+                <TouchableOpacity onPress={() => this.signInWithGoogleAsync()}>
+                <Image style={{width:50,height:50}} source={require('../assets/images/google_logo.png')}/>
+                </TouchableOpacity>
+                
+                
             </View>
         )
     };
@@ -69,3 +69,4 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps)(LoginComponent);
+

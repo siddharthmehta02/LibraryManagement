@@ -58,7 +58,9 @@ export default function BottomTabNavigator() {
         name="User"
         component={UserNavigator}
         options={{
-          tabBarIcon: ({ color }) => <EvilIcons name="user" size={24} color={color} />,
+          tabBarIcon: ({ color }) => <EvilIcons name="user" size={24} color={color} />
+        
+          
         }}
       />
     </BottomTab.Navigator>

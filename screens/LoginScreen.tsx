@@ -1,6 +1,7 @@
 import { StackScreenProps } from '@react-navigation/stack';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import {StyleSheet,Image} from 'react-native'
+import {  Text, View } from '../components/Themed';
 import LoginComponent from '../components/LoginComponent'
 
 import { RootStackParamList } from '../types';
@@ -10,29 +11,24 @@ import { RootStackParamList } from '../types';
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Login :)</Text>
-            {/* <Button title="Home" onPress={()=>navigation.replace('Root')}/> */}
             <LoginComponent navigation={navigation}/>
-
-            {/* <Button title="Register" onPress={() => navigation.replace('Register')} /> */}
-
-            {/* <TouchableOpacity onPress={() => navigation.replace('Root')} style={styles.link}>
-                <Text style={styles.linkText}>Go to home screen!</Text>
-            </TouchableOpacity> */}
         </View>
     );
 }
 
 const styles = StyleSheet.create({
+    
     container: {
         flex: 1,
-        backgroundColor: '#fff',
+        // backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
         padding: 20,
     },
     title: {
+        marginBottom:15,
         fontSize: 20,
-        fontWeight: 'bold',
+        fontWeight: 'bold'
     },
     link: {
         marginTop: 15,

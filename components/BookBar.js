@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { View, Text, Image, StyleSheet } from 'react-native'
+import { Image, StyleSheet } from 'react-native'
 import { FlatList, TouchableOpacity } from 'react-native-gesture-handler'
 // import { NavigationContainer, StackActions } from '@react-navigation/native
 import { firebase } from "../src/firebase/config";
+import { View, Text } from "../components/Themed";
 
 export default function BookBar({ genre, navigation }) {
 
@@ -34,7 +35,7 @@ export default function BookBar({ genre, navigation }) {
     return (
         <View style={styles.wrapper} >
             <View>
-                <Text style={styles.header}>Popular in {genre}</Text>
+                <Text style={styles.header}>Popular in <Text style={{ color:'#009688' }}>{genre}</Text> </Text>
             </View>
             <View>
                 <FlatList
@@ -62,7 +63,8 @@ export default function BookBar({ genre, navigation }) {
 const styles = StyleSheet.create({
     image: {
         width: 100,
-        height: 150
+        height: 150,
+        
     },
     content: {
         marginRight: 10,
@@ -70,12 +72,12 @@ const styles = StyleSheet.create({
         marginTop: 5
     },
     header: {
-        color: "#ffffff",
+        // color: "#ffffff",
         fontSize: 22,
         // marginTop:
     },
     title: {
-        color: "#ffffff",
+        // color: "#ffffff",
         textAlign: "center",
         opacity: 0.8
     },

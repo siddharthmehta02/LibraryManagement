@@ -6,7 +6,7 @@ import { Text, View } from '../components/Themed';
 export default function SearchScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Search</Text>
+      <Text style={styles.title}>Under Development See you soon :)</Text>
       
     </View>
   );

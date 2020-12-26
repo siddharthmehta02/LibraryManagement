@@ -1,6 +1,6 @@
 import * as React from "react";
-import { StyleSheet, SafeAreaView, ScrollView } from "react-native";
-import { View } from "../components/Themed";
+import { StyleSheet, SafeAreaView, ScrollView, Dimensions } from "react-native";
+import { View, Text } from "../components/Themed";
 import BookBar from "../components/BookBar";
 import { StackScreenProps } from "@react-navigation/stack";
 import { RootStackParamList } from "../types";
@@ -13,7 +13,16 @@ export default function HomeScreen({ navigation, }: StackScreenProps<RootStackPa
                     <BookBar genre={"Sci-Fi"} navigation={navigation}/>
                     <BookBar genre={"Sci-Fi"} navigation={navigation}/>
                     <BookBar genre={"Sci-Fi"} navigation={navigation}/>
+
                     <BookBar genre={"Sci-Fi"} navigation={navigation}/>
+
+                    <BookBar genre={"Sci-Fi"} navigation={navigation}/>
+
+                    <BookBar genre={"Sci-Fi"} navigation={navigation}/>
+                    <BookBar genre={"Sci-Fi"} navigation={navigation}/>
+                    <BookBar genre={"Sci-Fi"} navigation={navigation}/>
+
+                    
                     
                 </View>
             </ScrollView>
@@ -25,6 +34,7 @@ export default function HomeScreen({ navigation, }: StackScreenProps<RootStackPa
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        // height:Dimensions.get('window').height
     },
     title: {
         fontSize: 20,
@@ -36,7 +46,7 @@ const styles = StyleSheet.create({
         width: "80%",
     },
     input: {
-        color: "white",
+        // color: "white",
         borderWidth: 1,
         borderColor: "white",
         borderStyle: "solid",

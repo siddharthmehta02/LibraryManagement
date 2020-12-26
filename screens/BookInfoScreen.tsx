@@ -1,12 +1,13 @@
 import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
-import { View, Text, Image, StyleSheet, Button, SafeAreaView, StatusBar, ImageBackground } from 'react-native'
+import {  Image, StyleSheet, SafeAreaView, Dimensions} from 'react-native'
 import { RootStackParamList } from '../types';
 import { firebase } from '../src/firebase/config';
 import { connect } from 'react-redux';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { Text, View } from "../components/Themed";
 
 
 
@@ -34,8 +35,8 @@ function BookInfoScreen({ navigation, route }: StackScreenProps<RootStackParamLi
     }
     return (
 
-        <SafeAreaView style={styles.container}>
-
+        <SafeAreaView >
+            <View style={styles.container}>
 
             <View style={styles.upper}>
 
@@ -52,13 +53,13 @@ function BookInfoScreen({ navigation, route }: StackScreenProps<RootStackParamLi
             <View style={styles.middle}>
                 {/* <Button style={styles.backBtn} title="Back" onPress={() => navigation.replace('Root')} /> */}
                 <TouchableOpacity onPress={() => navigation.replace('Root')}>
-                    <AntDesign name="back" size={24} color="white" />
+                    <AntDesign name="back" size={24} color="#009688" />
                 </TouchableOpacity>
 
                 <View style={styles.spaceView}></View>
                 {/* <Button style={styles.cartBtn} title="Add to Cart" onPress={() => bookAddToFirestore()} /> */}
                 <TouchableOpacity onPress={() => bookAddToFirestore()}>
-                    <FontAwesome5 name="cart-plus" size={24} color="white" />
+                    <FontAwesome5 name="cart-plus" size={24} color="#009688" />
                 </TouchableOpacity>
 
 
@@ -68,18 +69,24 @@ function BookInfoScreen({ navigation, route }: StackScreenProps<RootStackParamLi
                 <Text style={styles.descriptionTitle}>Description</Text>
                 <Text style={styles.description}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae, et commodi tenetur ipsum nobis est quidem voluptate eaque laboriosam sequi quaerat ratione ducimus, sapiente porro explicabo atque exercitationem enim deserunt?</Text>
             </View>
+            </View>
+
         </SafeAreaView>
     )
 }
 
 const styles = StyleSheet.create({
+    container:{
+        // height:"100%"
+        height:Dimensions.get('window').height+100
+    },
 
     image: {
         width: 100,
         height: 150
     },
     title: {
-        color: "#ffffff",
+        // color: "#ffffff",
         fontSize: 30,
 
 
@@ -124,11 +131,11 @@ const styles = StyleSheet.create({
 
     },
     description: {
-        color: "#ffffff",
+        // color: "#ffffff",
         paddingHorizontal: 10
     },
     descriptionTitle: {
-        color: "#ffffff",
+        // color: "#ffffff",
         paddingHorizontal: 10,
         fontSize: 20,
         marginVertical: 10
