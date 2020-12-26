@@ -1,13 +1,17 @@
-import React from 'react'
-import { View, Text,Button } from 'react-native'
+import React, { useState, useEffect } from 'react'
+import { View, Text, Button } from 'react-native'
 import { connect } from 'react-redux'
 import * as Google from 'expo-google-app-auth';
 import { firebase } from '../src/firebase/config';
+import AsyncStorage from '@react-native-community/async-storage'
 
 import { RootStackParamList } from '../types';
 
 
 class LoginComponent extends React.Component {
+
+
+
 
     signInWithGoogleAsync = async () => {
         try {
@@ -50,7 +54,8 @@ class LoginComponent extends React.Component {
     }
 
     render() {
-        
+
+
         return (
             <View>
                 <Button title="Loginn" onPress={() => this.signInWithGoogleAsync()} />
