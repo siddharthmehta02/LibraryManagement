@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, FlatList, Image, Button, LogBox } from 'react-native';
+import { StyleSheet, FlatList, Image, Button, LogBox, YellowBox } from 'react-native';
 import { firebase } from '../src/firebase/config';
 
 
@@ -9,6 +9,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 // import { FlatList } from 'react-native-gesture-handler';
 
 export default function CartScreen() {
+  console.ignoredYellowBox = ['Setting a timer'];
   const [cart, setCart] = useState({})
 
   const title = firebase.firestore()
@@ -56,7 +57,7 @@ export default function CartScreen() {
       // console.log(cart)
     });
 
- 
+
 
 
 
